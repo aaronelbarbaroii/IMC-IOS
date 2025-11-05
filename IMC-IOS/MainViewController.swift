@@ -37,13 +37,13 @@ class MainViewController: UIViewController {
     
     @IBAction func weightStepper(_ sender: UIStepper) {
         weight = Int(sender.value)
-        weightLabel.text = "\(weight)"
+        weightLabel.text = "\(weight) kg"
         calculateButton()
     }
     
     @IBAction func heightSlider(_ sender: UISlider) {
         height = Int(sender.value)
-        heightLabel.text = "\(height)"
+        heightLabel.text = "\(height) cm"
         calculateButton()
     }
     
@@ -55,20 +55,25 @@ class MainViewController: UIViewController {
     
     func estadoIMC(imc: Double) -> String {
         if imc < 18.5 {
-            estado.textColor = .blue
+            estado.textColor = .bmiColorUnderweight
+            resultLabel.textColor = .bmiColorUnderweight
             return "Bajo peso"
         } else if imc < 24.9 {
-            estado.textColor = .green
+            estado.textColor = .bmiColorNormal
+            resultLabel.textColor = .bmiColorNormal
             return "Peso saludable"
         } else if imc < 29.9 {
-            estado.textColor = .yellow
+            estado.textColor = .bmiColorOverweight
+            resultLabel.textColor = .bmiColorOverweight
             return "Sobrepeso"
         } else if imc < 34.9 {
-            estado.textColor = .orange
+            estado.textColor = .bmiColorObesity
+            resultLabel.textColor = .bmiColorObesity
             return "Obesidad"
         }
         else {
-            estado.textColor = .red
+            estado.textColor = .bmiColorExtremeObesity
+            resultLabel.textColor = .bmiColorExtremeObesity
             return "Obesidad mórbida"
         }
     }
